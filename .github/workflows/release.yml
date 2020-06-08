@@ -19,8 +19,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      # - name: Setup Terraform
-      #   uses: hashicorp/setup-terraform@v1
       - name: Cache
         uses: actions/cache@v2
         with:
@@ -28,6 +26,14 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+      # - name: Setup Terraform
+      #   uses: hashicorp/setup-terraform@v1
+      # - name: Test
+      #   run: |
+      #     cd examples/local-only
+      #     terraform init
+      #     terraform plan
+      #     terraform apply
       - name: Install dependencies
         run: npm ci
       - name: Release
