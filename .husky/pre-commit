@@ -1,0 +1,10 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+set -euo pipefail
+
+pnpm exec ls-lint || exit 1
+terraform validate || exit 1
+terraform fmt || exit 1
+terraform-docs markdown ./ > README.md || exit 1
+
+git update-index --again

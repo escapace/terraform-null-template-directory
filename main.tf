@@ -7,7 +7,7 @@ locals {
   template_file_paths = {
     for p in local.all_file_paths :
     substr(p, 0, length(p) - length(var.template_file_suffix)) => p
-    if ! contains(local.static_file_paths, p)
+    if !contains(local.static_file_paths, p)
   }
 
   template_file_contents = {
