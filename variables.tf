@@ -23,7 +23,7 @@ variable "file_types" {
     ".htm"    = "text/html; charset=utf-8"
     ".xhtml"  = "application/xhtml+xml"
     ".css"    = "text/css; charset=utf-8"
-    ".js"     = "application/javascript"
+    ".js"     = "text/javascript"
     ".xml"    = "application/xml"
     ".json"   = "application/json"
     ".jsonld" = "application/ld+json"
