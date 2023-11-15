@@ -1,5 +1,6 @@
 locals {
-  all_file_paths = fileset(var.base_dir, "**")
+  # all_file_paths = fileset(var.base_dir, "**")
+  all_file_paths = [for file in fileset(var.base_dir, "**") : file if !anytrue([for pattern in var.exclude : try(regex(pattern, basename(file)), false) != false])]
   static_file_paths = toset([
     for p in local.all_file_paths : p
     if length(p) < length(var.template_file_suffix) || substr(p, length(p) - length(var.template_file_suffix), length(var.template_file_suffix)) != var.template_file_suffix

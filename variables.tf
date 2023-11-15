@@ -3,6 +3,12 @@ variable "base_dir" {
   description = "The base directory in which this module will search for static files and templates."
 }
 
+variable "exclude" {
+  type        = list(string)
+  description = "Regular expression patterns to exclude file names."
+  default     = []
+}
+
 variable "template_vars" {
   type        = any
   default     = {}
